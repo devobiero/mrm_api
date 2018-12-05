@@ -15,6 +15,7 @@ from api.role.models import Role
 from api.user_role.models import UsersRole
 from api.devices.models import Devices
 from api.office.models import Office
+from api.question.models import Question
 from fixtures.token.token_fixture import (
     user_api_token,
     admin_api_token,
@@ -98,6 +99,27 @@ class BaseTestCase(TestCase):
                 device_type="External Display"
             )
             device.save()
+            question_1 = Question(
+                question_type="Rate",
+                question="How will you rate the brightness of the room",
+                start_date="20 Nov 2018",
+                end_date="28 Nov 2018"
+            )
+            question_1.save()
+            question_2 = Question(
+                question_type="Check",
+                question="Is there anything missing in the room",
+                start_date="20 Nov 2018",
+                end_date="28 Nov 2018"
+            )
+            question_2.save()
+            question_3 = Question(
+                question_type="Input",
+                question="Any other suggestion",
+                start_date="20 Nov 2018",
+                end_date="28 Nov 2018"
+            )
+            question_3.save()
             db_session.commit()
 
     def tearDown(self):
